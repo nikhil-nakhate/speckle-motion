@@ -1,1 +1,0 @@
-/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_convolve_cpu.dir/getting_started/convolve.cpp.o  -o getting_started/convolve_cpu -rdynamic /usr/local/lib/libafcpu.so.3.4.1 -Wl,-rpath,/usr/local/lib 

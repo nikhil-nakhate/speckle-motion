@@ -1,1 +1,0 @@
-/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_lu_cpu.dir/lin_algebra/lu.cpp.o  -o lin_algebra/lu_cpu -rdynamic /usr/local/lib/libafcpu.so.3.4.1 -Wl,-rpath,/usr/local/lib 

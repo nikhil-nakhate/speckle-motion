@@ -1,1 +1,0 @@
-/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_logistic_regression_cpu.dir/machine_learning/logistic_regression.cpp.o  -o machine_learning/logistic_regression_cpu -rdynamic /usr/local/lib/libafcpu.so.3.4.1 -Wl,-rpath,/usr/local/lib 

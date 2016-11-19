@@ -1,1 +1,0 @@
-/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_vectorize_cpu.dir/getting_started/vectorize.cpp.o  -o getting_started/vectorize_cpu -rdynamic /usr/local/lib/libafcpu.so.3.4.1 -Wl,-rpath,/usr/local/lib 

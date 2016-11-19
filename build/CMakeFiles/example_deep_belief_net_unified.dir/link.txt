@@ -1,1 +1,0 @@
-/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_deep_belief_net_unified.dir/machine_learning/deep_belief_net.cpp.o  -o machine_learning/deep_belief_net_unified -rdynamic /usr/local/lib/libaf.so.3.4.1 -ldl -Wl,-rpath,/usr/local/lib 

@@ -1,1 +1,0 @@
-/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_logistic_regression_unified.dir/machine_learning/logistic_regression.cpp.o  -o machine_learning/logistic_regression_unified -rdynamic /usr/local/lib/libaf.so.3.4.1 -ldl -Wl,-rpath,/usr/local/lib 

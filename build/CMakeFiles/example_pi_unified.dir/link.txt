@@ -1,1 +1,0 @@
-/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_pi_unified.dir/benchmarks/pi.cpp.o  -o benchmarks/pi_unified -rdynamic /usr/local/lib/libaf.so.3.4.1 -ldl -Wl,-rpath,/usr/local/lib 
