@@ -1,0 +1,1 @@
+/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_conway_unified.dir/graphics/conway.cpp.o  -o graphics/conway_unified -rdynamic /usr/local/lib/libaf.so.3.4.1 -ldl -Wl,-rpath,/usr/local/lib 

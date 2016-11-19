@@ -1,0 +1,1 @@
+/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_neural_network_cpu.dir/machine_learning/neural_network.cpp.o  -o machine_learning/neural_network_cpu -rdynamic /usr/local/lib/libafcpu.so.3.4.1 -Wl,-rpath,/usr/local/lib 

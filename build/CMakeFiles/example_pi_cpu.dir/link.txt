@@ -1,0 +1,1 @@
+/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_pi_cpu.dir/benchmarks/pi.cpp.o  -o benchmarks/pi_cpu -rdynamic /usr/local/lib/libafcpu.so.3.4.1 -Wl,-rpath,/usr/local/lib 

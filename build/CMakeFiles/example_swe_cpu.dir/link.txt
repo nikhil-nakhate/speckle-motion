@@ -1,0 +1,1 @@
+/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_swe_cpu.dir/pde/swe.cpp.o  -o pde/swe_cpu -rdynamic /usr/local/lib/libafcpu.so.3.4.1 -Wl,-rpath,/usr/local/lib 

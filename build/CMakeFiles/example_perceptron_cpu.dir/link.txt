@@ -1,0 +1,1 @@
+/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_perceptron_cpu.dir/machine_learning/perceptron.cpp.o  -o machine_learning/perceptron_cpu -rdynamic /usr/local/lib/libafcpu.so.3.4.1 -Wl,-rpath,/usr/local/lib 

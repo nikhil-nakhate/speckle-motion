@@ -1,0 +1,1 @@
+/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_surface_unified.dir/graphics/surface.cpp.o  -o graphics/surface_unified -rdynamic /usr/local/lib/libaf.so.3.4.1 -ldl -Wl,-rpath,/usr/local/lib 

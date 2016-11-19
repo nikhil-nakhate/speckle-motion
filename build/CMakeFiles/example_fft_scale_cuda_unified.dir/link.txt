@@ -1,0 +1,1 @@
+/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_fft_scale_cuda_unified.dir/computer_vision/fft_scale_cuda.cpp.o  -o computer_vision/fft_scale_cuda_unified -rdynamic /usr/local/lib/libaf.so.3.4.1 -ldl -Wl,-rpath,/usr/local/lib 

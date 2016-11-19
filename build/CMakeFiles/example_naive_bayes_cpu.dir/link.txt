@@ -1,0 +1,1 @@
+/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_naive_bayes_cpu.dir/machine_learning/naive_bayes.cpp.o  -o machine_learning/naive_bayes_cpu -rdynamic /usr/local/lib/libafcpu.so.3.4.1 -Wl,-rpath,/usr/local/lib 

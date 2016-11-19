@@ -1,0 +1,1 @@
+/usr/bin/c++    -Werror=deprecated-declarations    CMakeFiles/example_brain_segmentation_unified.dir/image_processing/brain_segmentation.cpp.o  -o image_processing/brain_segmentation_unified -rdynamic /usr/local/lib/libaf.so.3.4.1 -ldl -Wl,-rpath,/usr/local/lib 
