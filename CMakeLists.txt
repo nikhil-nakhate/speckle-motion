@@ -38,7 +38,7 @@ IF(WIN32)
         SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} /we4996")
     ENDIF(MSVC)
 ELSE(WIN32)
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=deprecated-declarations")
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=deprecated-declarations -std=c++0x")
     SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -Werror=deprecated-declarations")
 ENDIF(WIN32)
 

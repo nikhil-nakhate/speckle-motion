@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nikhil/Downloads/examples
+CMAKE_SOURCE_DIR = /home/nikhil/Code/ComputerVision
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nikhil/Downloads/examples/build
+CMAKE_BINARY_DIR = /home/nikhil/Code/ComputerVision/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/example_fft_scale_cuda_cpu.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/example_fft_scale_cuda_cpu.dir/flags.make
 
 CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.o: CMakeFiles/example_fft_scale_cuda_cpu.dir/flags.make
 CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.o: ../computer_vision/fft_scale_cuda.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nikhil/Downloads/examples/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nikhil/Code/ComputerVision/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.o -c /home/nikhil/Downloads/examples/computer_vision/fft_scale_cuda.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.o -c /home/nikhil/Code/ComputerVision/computer_vision/fft_scale_cuda.cpp
 
 CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/nikhil/Downloads/examples/computer_vision/fft_scale_cuda.cpp > CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/nikhil/Code/ComputerVision/computer_vision/fft_scale_cuda.cpp > CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.i
 
 CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/nikhil/Downloads/examples/computer_vision/fft_scale_cuda.cpp -o CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/nikhil/Code/ComputerVision/computer_vision/fft_scale_cuda.cpp -o CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.s
 
 CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.o.requires:
 .PHONY : CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.o.requires
@@ -101,6 +101,6 @@ CMakeFiles/example_fft_scale_cuda_cpu.dir/clean:
 .PHONY : CMakeFiles/example_fft_scale_cuda_cpu.dir/clean
 
 CMakeFiles/example_fft_scale_cuda_cpu.dir/depend:
-	cd /home/nikhil/Downloads/examples/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nikhil/Downloads/examples /home/nikhil/Downloads/examples /home/nikhil/Downloads/examples/build /home/nikhil/Downloads/examples/build /home/nikhil/Downloads/examples/build/CMakeFiles/example_fft_scale_cuda_cpu.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nikhil/Code/ComputerVision/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nikhil/Code/ComputerVision /home/nikhil/Code/ComputerVision /home/nikhil/Code/ComputerVision/build /home/nikhil/Code/ComputerVision/build /home/nikhil/Code/ComputerVision/build/CMakeFiles/example_fft_scale_cuda_cpu.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/example_fft_scale_cuda_cpu.dir/depend
 

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/nikhil/Downloads/examples/computer_vision/fft_scale_cuda.cpp
+/home/nikhil/Code/ComputerVision/computer_vision/fft_scale_cuda.cpp
 arrayfire.h
 -
 stdio.h
@@ -16,6 +16,10 @@ math.h
 cstdlib
 -
 cstring
+-
+string
+-
+iostream
 -
 
 /usr/local/include/af/algorithm.h

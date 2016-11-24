@@ -3,6 +3,8 @@
 #include <math.h>
 #include <cstdlib>
 #include <cstring>
+#include <string>
+#include <iostream>
 
 using namespace af;
 
@@ -10,8 +12,79 @@ using namespace af;
 
 int main(int argc, char **argv) {
 
+	char *str3 = NULL;
+	int num_of_scales = 30;
+	float inc_amt = 0.01;
+	int *radius_deltas;
+	array fixed_old;
+	array moving_old;
 	//const array& mem_result = &result_stack;
+	if (argc < 3) {
+	
+		fixed_old = loadImage(ASSETS_DIR "/examples/fft_scale/fixed1.pgm");
+		moving_old = loadImage(ASSETS_DIR "/examples/fft_scale/moving1.pgm");
+		int j = 1 - num_of_scales*inc_amt;
+		radius_deltas = new int[num_of_scales * 2 + 1];
+		for (int i = 0; i < 61; i++) {
+			radius_deltas[i] = j;
+			int j = 1 - num_of_scales*inc_amt;
+		}
+		std::cout<<"Taking Default output directory\n";
+		str3 = NULL;
+	} else if (argc < 5){
 
+		fixed_old = loadImage(argv[1]);
+		moving_old = loadImage(argv[2]);
+		int j = 1 - num_of_scales*inc_amt;
+		radius_deltas = new int[num_of_scales * 2 + 1];
+		for (int i = 0; i < 61; i++) {
+			radius_deltas[i] = j;
+			int j = 1 - num_of_scales*inc_amt;
+		}
+		std::cout<<"Taking Default output directory\n";
+		str3 = NULL;
+		
+	} else if (argc < 6) {
+	
+		fixed_old = loadImage(argv[1]);
+		moving_old = loadImage(argv[2]);
+		std::string::size_type sz1;
+		std::string::size_type sz2;
+		num_of_scales = std::stoi(argv[3], &sz1);
+
+		inc_amt = std::stof(argv[4], &sz2);
+		int j = 1 - num_of_scales*inc_amt;
+		radius_deltas = new int[num_of_scales * 2 + 1];
+		for (int i = 0; i < num_of_scales; i++) {
+			radius_deltas[i] = j;
+			j += inc_amt;
+		}
+
+		std::cout<<"Taking Default output directory\n";
+		str3 = NULL;
+
+
+	} else {
+	
+		
+		fixed_old = loadImage(argv[1]);
+		moving_old = loadImage(argv[2]);
+
+		std::string::size_type sz1;
+		std::string::size_type sz2;
+		num_of_scales = std::stoi(argv[3], &sz1);
+
+		inc_amt = std::stof(argv[4], &sz2);
+		int j = 1 - num_of_scales*inc_amt;
+		radius_deltas = new int[num_of_scales * 2 + 1];
+		for (int i = 0; i < num_of_scales; i++) {
+			radius_deltas[i] = j;
+			j += inc_amt;
+		}
+
+		str3 = argv[5];
+	
+	}
 	float max_value_real = 0;
 	float min_value = 0;
 	double max_imag_real = 0;
@@ -24,20 +97,14 @@ int main(int argc, char **argv) {
 	//max(&max_element_array3, &max_idx_array3, &result_stack, 3);
 	//af::print("Max_Element_Array", max_value_real);
 	
-	array fixed_old = loadImage(ASSETS_DIR "/examples/fft_scale/fixed1.pgm");
-	array moving_old = loadImage(ASSETS_DIR "/examples/fft_scale/moving1.pgm");
 
 	array fixed;
 	array moving;
 
-	int radius_deltas[61];
-
-	int j = -30;
-	for (int i = 0; i < 61; i++) {
-		radius_deltas[i] = j;
-		++j;
-	}
-
+	//for (int i = 0; i < 61; i++) {
+	//	radius_deltas[i] = j;
+	//	++j;
+	//}
 	dim4 fix_dims = fixed_old.dims();
 	dim4 moving_dims = moving_old.dims();
 
@@ -110,14 +177,14 @@ int main(int argc, char **argv) {
 
 	af::max(&max_value_fft, &idx_max_fft, fixed_fft);
 
-	int num_radius_deltas = 61;
+	int num_radius_deltas = num_of_scales * 2 + 1;
 	array result_stack(imgw, imgh, 61);
 
 	float peaks[61];
 	for (int i = 0; i< num_radius_deltas; i++) {
 		int rd = radius_deltas[i];
 		array result;
-		if(rd < 0) {
+		if(i < num_of_scales) {
 		
 			float new_imgh = imgh - (rd * 2);
 			float new_imgw = imgw - (rd * 2);
@@ -151,13 +218,17 @@ int main(int argc, char **argv) {
 			peaks[i] = max_value_real;
 			result = (result - min_value) / (max_value_real - min_value);
 			char str[200];
-			sprintf(str, "image%02d.pgm", i);
+			if (str3 != NULL) {
+				sprintf(str, "%simage%02d.pgm", str3, i);
+			} else {
+				sprintf(str, "image%02d.pgm", i);
+			}
 
 			saveImage(str, result);
 			//std::cout<<result.dims(0)<<rd<<result.dims(1)<<'\n';
 			result_stack(span,span,i) = result;
 			//std::cout<<moving_scaled_fft.dims(0)<<"hel"<<moving_scaled_fft.dims(1)<<'\n';
-		} else if (rd > 0) {
+		} else if (i > num_of_scales) {
 		
 			float new_imgh = imgh + (rd*2);
 			float new_imgw = imgw + (rd*2);
@@ -196,11 +267,17 @@ int main(int argc, char **argv) {
 			af::max(&max_value_real, &idx_max, result);
 			af::min(&min_value, &idx_min, result);
 			std::cout<<"Index: "<<idx_max<<'\n';
+			
+			//std::cout<<"str"<<'\n';
 			peaks[i] = max_value_real;
 			result = (result - min_value) / (max_value_real - min_value);
 			char str[200];
-			sprintf(str, "image%02d.pgm", i);
-
+			//sprintf(str, "%simage%02d.pgm", str3, i);
+			if (str3 != NULL) {
+				sprintf(str, "%simage%02d.pgm", str3, i);
+			} else {
+				sprintf(str, "image%02d.pgm", i);
+			}
 			saveImage(str, result);
 			result_stack(span, span,i) = result;
 
@@ -219,12 +296,16 @@ int main(int argc, char **argv) {
 			peaks[i] = max_value_real;
 			result = (result - min_value) / (max_value_real - min_value);
 			char str[200];
-			sprintf(str, "image%02d.pgm", i);
+			//sprintf(str, "%simage%02d.pgm", str3, i);
 			saveImage(str, result);
-			char key_str[20];
-			sprintf(key_str, "A%02d", i);
-			sprintf(str, "image%02d.txt", i);
-			saveArray(key_str, result, str);
+			if (str3 != NULL) {
+				sprintf(str, "%simage%02d.pgm", str3, i);
+			} else {
+				sprintf(str, "image%02d.pgm", i);
+			}
+			//char key_str[20];
+			//sprintf(key_str, "A%02d", i);
+			//saveArray(key_str, result, str);
 			result_stack(span, span, i) = result;
 
 			//std::cout<<"Index of Max"<<idx_max<<'\n';

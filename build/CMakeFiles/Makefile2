@@ -50,10 +50,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nikhil/Downloads/examples
+CMAKE_SOURCE_DIR = /home/nikhil/Code/ComputerVision
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nikhil/Downloads/examples/build
+CMAKE_BINARY_DIR = /home/nikhil/Code/ComputerVision/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/example_fft_scale_cuda_cpu.dir
@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = /home/nikhil/Downloads/examples/build
 CMakeFiles/example_fft_scale_cuda_cpu.dir/all:
 	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cpu.dir/build.make CMakeFiles/example_fft_scale_cuda_cpu.dir/depend
 	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cpu.dir/build.make CMakeFiles/example_fft_scale_cuda_cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nikhil/Downloads/examples/build/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nikhil/Code/ComputerVision/build/CMakeFiles  1
 	@echo "Built target example_fft_scale_cuda_cpu"
 .PHONY : CMakeFiles/example_fft_scale_cuda_cpu.dir/all
 
@@ -72,9 +72,9 @@ all: CMakeFiles/example_fft_scale_cuda_cpu.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/example_fft_scale_cuda_cpu.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Downloads/examples/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Code/ComputerVision/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/example_fft_scale_cuda_cpu.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Downloads/examples/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Code/ComputerVision/build/CMakeFiles 0
 .PHONY : CMakeFiles/example_fft_scale_cuda_cpu.dir/rule
 
 # Convenience name for target.
@@ -97,7 +97,7 @@ clean: CMakeFiles/example_fft_scale_cuda_cpu.dir/clean
 CMakeFiles/example_fft_scale_cuda_cuda.dir/all:
 	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cuda.dir/build.make CMakeFiles/example_fft_scale_cuda_cuda.dir/depend
 	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cuda.dir/build.make CMakeFiles/example_fft_scale_cuda_cuda.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nikhil/Downloads/examples/build/CMakeFiles  2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nikhil/Code/ComputerVision/build/CMakeFiles  2
 	@echo "Built target example_fft_scale_cuda_cuda"
 .PHONY : CMakeFiles/example_fft_scale_cuda_cuda.dir/all
 
@@ -107,9 +107,9 @@ all: CMakeFiles/example_fft_scale_cuda_cuda.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/example_fft_scale_cuda_cuda.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Downloads/examples/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Code/ComputerVision/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/example_fft_scale_cuda_cuda.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Downloads/examples/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Code/ComputerVision/build/CMakeFiles 0
 .PHONY : CMakeFiles/example_fft_scale_cuda_cuda.dir/rule
 
 # Convenience name for target.
@@ -132,7 +132,7 @@ clean: CMakeFiles/example_fft_scale_cuda_cuda.dir/clean
 CMakeFiles/example_fft_scale_cuda_unified.dir/all:
 	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_unified.dir/build.make CMakeFiles/example_fft_scale_cuda_unified.dir/depend
 	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_unified.dir/build.make CMakeFiles/example_fft_scale_cuda_unified.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nikhil/Downloads/examples/build/CMakeFiles  3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nikhil/Code/ComputerVision/build/CMakeFiles  3
 	@echo "Built target example_fft_scale_cuda_unified"
 .PHONY : CMakeFiles/example_fft_scale_cuda_unified.dir/all
 
@@ -142,9 +142,9 @@ all: CMakeFiles/example_fft_scale_cuda_unified.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/example_fft_scale_cuda_unified.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Downloads/examples/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Code/ComputerVision/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/example_fft_scale_cuda_unified.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Downloads/examples/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Code/ComputerVision/build/CMakeFiles 0
 .PHONY : CMakeFiles/example_fft_scale_cuda_unified.dir/rule
 
 # Convenience name for target.

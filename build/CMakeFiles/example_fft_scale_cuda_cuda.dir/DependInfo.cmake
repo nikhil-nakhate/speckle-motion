@@ -4,13 +4,13 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/nikhil/Downloads/examples/computer_vision/fft_scale_cuda.cpp" "/home/nikhil/Downloads/examples/build/CMakeFiles/example_fft_scale_cuda_cuda.dir/computer_vision/fft_scale_cuda.cpp.o"
+  "/home/nikhil/Code/ComputerVision/computer_vision/fft_scale_cuda.cpp" "/home/nikhil/Code/ComputerVision/build/CMakeFiles/example_fft_scale_cuda_cuda.dir/computer_vision/fft_scale_cuda.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 SET(CMAKE_TARGET_DEFINITIONS
-  "ASSETS_DIR=\"/home/nikhil/Downloads/examples/assets\""
+  "ASSETS_DIR=\"/home/nikhil/Code/ComputerVision/assets\""
   )
 
 # Targets to which this target links.
