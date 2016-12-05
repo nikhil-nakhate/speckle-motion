@@ -1,3 +1,3 @@
-/home/nikhil/Code/ComputerVision/build/CMakeFiles/example_fft_scale_cuda_cpu.dir
-/home/nikhil/Code/ComputerVision/build/CMakeFiles/example_fft_scale_cuda_cuda.dir
-/home/nikhil/Code/ComputerVision/build/CMakeFiles/example_fft_scale_cuda_unified.dir
+/home/nikhil/Code/ComputerVision/build/CMakeFiles/example_fft_scale_cuda_new_cpu.dir
+/home/nikhil/Code/ComputerVision/build/CMakeFiles/example_fft_scale_cuda_new_cuda.dir
+/home/nikhil/Code/ComputerVision/build/CMakeFiles/example_fft_scale_cuda_new_unified.dir

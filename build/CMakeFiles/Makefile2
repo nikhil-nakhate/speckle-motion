@@ -56,108 +56,108 @@ CMAKE_SOURCE_DIR = /home/nikhil/Code/ComputerVision
 CMAKE_BINARY_DIR = /home/nikhil/Code/ComputerVision/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/example_fft_scale_cuda_cpu.dir
+# Target rules for target CMakeFiles/example_fft_scale_cuda_new_cpu.dir
 
 # All Build rule for target.
-CMakeFiles/example_fft_scale_cuda_cpu.dir/all:
-	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cpu.dir/build.make CMakeFiles/example_fft_scale_cuda_cpu.dir/depend
-	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cpu.dir/build.make CMakeFiles/example_fft_scale_cuda_cpu.dir/build
+CMakeFiles/example_fft_scale_cuda_new_cpu.dir/all:
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_new_cpu.dir/build.make CMakeFiles/example_fft_scale_cuda_new_cpu.dir/depend
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_new_cpu.dir/build.make CMakeFiles/example_fft_scale_cuda_new_cpu.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/nikhil/Code/ComputerVision/build/CMakeFiles  1
-	@echo "Built target example_fft_scale_cuda_cpu"
-.PHONY : CMakeFiles/example_fft_scale_cuda_cpu.dir/all
+	@echo "Built target example_fft_scale_cuda_new_cpu"
+.PHONY : CMakeFiles/example_fft_scale_cuda_new_cpu.dir/all
 
 # Include target in all.
-all: CMakeFiles/example_fft_scale_cuda_cpu.dir/all
+all: CMakeFiles/example_fft_scale_cuda_new_cpu.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/example_fft_scale_cuda_cpu.dir/rule: cmake_check_build_system
+CMakeFiles/example_fft_scale_cuda_new_cpu.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Code/ComputerVision/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/example_fft_scale_cuda_cpu.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/example_fft_scale_cuda_new_cpu.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Code/ComputerVision/build/CMakeFiles 0
-.PHONY : CMakeFiles/example_fft_scale_cuda_cpu.dir/rule
+.PHONY : CMakeFiles/example_fft_scale_cuda_new_cpu.dir/rule
 
 # Convenience name for target.
-example_fft_scale_cuda_cpu: CMakeFiles/example_fft_scale_cuda_cpu.dir/rule
-.PHONY : example_fft_scale_cuda_cpu
+example_fft_scale_cuda_new_cpu: CMakeFiles/example_fft_scale_cuda_new_cpu.dir/rule
+.PHONY : example_fft_scale_cuda_new_cpu
 
 # clean rule for target.
-CMakeFiles/example_fft_scale_cuda_cpu.dir/clean:
-	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cpu.dir/build.make CMakeFiles/example_fft_scale_cuda_cpu.dir/clean
-.PHONY : CMakeFiles/example_fft_scale_cuda_cpu.dir/clean
+CMakeFiles/example_fft_scale_cuda_new_cpu.dir/clean:
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_new_cpu.dir/build.make CMakeFiles/example_fft_scale_cuda_new_cpu.dir/clean
+.PHONY : CMakeFiles/example_fft_scale_cuda_new_cpu.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/example_fft_scale_cuda_cpu.dir/clean
+clean: CMakeFiles/example_fft_scale_cuda_new_cpu.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/example_fft_scale_cuda_cuda.dir
+# Target rules for target CMakeFiles/example_fft_scale_cuda_new_cuda.dir
 
 # All Build rule for target.
-CMakeFiles/example_fft_scale_cuda_cuda.dir/all:
-	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cuda.dir/build.make CMakeFiles/example_fft_scale_cuda_cuda.dir/depend
-	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cuda.dir/build.make CMakeFiles/example_fft_scale_cuda_cuda.dir/build
+CMakeFiles/example_fft_scale_cuda_new_cuda.dir/all:
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_new_cuda.dir/build.make CMakeFiles/example_fft_scale_cuda_new_cuda.dir/depend
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_new_cuda.dir/build.make CMakeFiles/example_fft_scale_cuda_new_cuda.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/nikhil/Code/ComputerVision/build/CMakeFiles  2
-	@echo "Built target example_fft_scale_cuda_cuda"
-.PHONY : CMakeFiles/example_fft_scale_cuda_cuda.dir/all
+	@echo "Built target example_fft_scale_cuda_new_cuda"
+.PHONY : CMakeFiles/example_fft_scale_cuda_new_cuda.dir/all
 
 # Include target in all.
-all: CMakeFiles/example_fft_scale_cuda_cuda.dir/all
+all: CMakeFiles/example_fft_scale_cuda_new_cuda.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/example_fft_scale_cuda_cuda.dir/rule: cmake_check_build_system
+CMakeFiles/example_fft_scale_cuda_new_cuda.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Code/ComputerVision/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/example_fft_scale_cuda_cuda.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/example_fft_scale_cuda_new_cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Code/ComputerVision/build/CMakeFiles 0
-.PHONY : CMakeFiles/example_fft_scale_cuda_cuda.dir/rule
+.PHONY : CMakeFiles/example_fft_scale_cuda_new_cuda.dir/rule
 
 # Convenience name for target.
-example_fft_scale_cuda_cuda: CMakeFiles/example_fft_scale_cuda_cuda.dir/rule
-.PHONY : example_fft_scale_cuda_cuda
+example_fft_scale_cuda_new_cuda: CMakeFiles/example_fft_scale_cuda_new_cuda.dir/rule
+.PHONY : example_fft_scale_cuda_new_cuda
 
 # clean rule for target.
-CMakeFiles/example_fft_scale_cuda_cuda.dir/clean:
-	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cuda.dir/build.make CMakeFiles/example_fft_scale_cuda_cuda.dir/clean
-.PHONY : CMakeFiles/example_fft_scale_cuda_cuda.dir/clean
+CMakeFiles/example_fft_scale_cuda_new_cuda.dir/clean:
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_new_cuda.dir/build.make CMakeFiles/example_fft_scale_cuda_new_cuda.dir/clean
+.PHONY : CMakeFiles/example_fft_scale_cuda_new_cuda.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/example_fft_scale_cuda_cuda.dir/clean
+clean: CMakeFiles/example_fft_scale_cuda_new_cuda.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/example_fft_scale_cuda_unified.dir
+# Target rules for target CMakeFiles/example_fft_scale_cuda_new_unified.dir
 
 # All Build rule for target.
-CMakeFiles/example_fft_scale_cuda_unified.dir/all:
-	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_unified.dir/build.make CMakeFiles/example_fft_scale_cuda_unified.dir/depend
-	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_unified.dir/build.make CMakeFiles/example_fft_scale_cuda_unified.dir/build
+CMakeFiles/example_fft_scale_cuda_new_unified.dir/all:
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_new_unified.dir/build.make CMakeFiles/example_fft_scale_cuda_new_unified.dir/depend
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_new_unified.dir/build.make CMakeFiles/example_fft_scale_cuda_new_unified.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/nikhil/Code/ComputerVision/build/CMakeFiles  3
-	@echo "Built target example_fft_scale_cuda_unified"
-.PHONY : CMakeFiles/example_fft_scale_cuda_unified.dir/all
+	@echo "Built target example_fft_scale_cuda_new_unified"
+.PHONY : CMakeFiles/example_fft_scale_cuda_new_unified.dir/all
 
 # Include target in all.
-all: CMakeFiles/example_fft_scale_cuda_unified.dir/all
+all: CMakeFiles/example_fft_scale_cuda_new_unified.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/example_fft_scale_cuda_unified.dir/rule: cmake_check_build_system
+CMakeFiles/example_fft_scale_cuda_new_unified.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Code/ComputerVision/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/example_fft_scale_cuda_unified.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/example_fft_scale_cuda_new_unified.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nikhil/Code/ComputerVision/build/CMakeFiles 0
-.PHONY : CMakeFiles/example_fft_scale_cuda_unified.dir/rule
+.PHONY : CMakeFiles/example_fft_scale_cuda_new_unified.dir/rule
 
 # Convenience name for target.
-example_fft_scale_cuda_unified: CMakeFiles/example_fft_scale_cuda_unified.dir/rule
-.PHONY : example_fft_scale_cuda_unified
+example_fft_scale_cuda_new_unified: CMakeFiles/example_fft_scale_cuda_new_unified.dir/rule
+.PHONY : example_fft_scale_cuda_new_unified
 
 # clean rule for target.
-CMakeFiles/example_fft_scale_cuda_unified.dir/clean:
-	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_unified.dir/build.make CMakeFiles/example_fft_scale_cuda_unified.dir/clean
-.PHONY : CMakeFiles/example_fft_scale_cuda_unified.dir/clean
+CMakeFiles/example_fft_scale_cuda_new_unified.dir/clean:
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_new_unified.dir/build.make CMakeFiles/example_fft_scale_cuda_new_unified.dir/clean
+.PHONY : CMakeFiles/example_fft_scale_cuda_new_unified.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/example_fft_scale_cuda_unified.dir/clean
+clean: CMakeFiles/example_fft_scale_cuda_new_unified.dir/clean
 .PHONY : clean
 
 #=============================================================================

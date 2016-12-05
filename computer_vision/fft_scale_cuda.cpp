@@ -14,8 +14,8 @@ int main(int argc, char **argv) {
 
 	char *str3 = NULL;
 	int num_of_scales = 30;
-	float inc_amt = 0.01;
-	int *radius_deltas;
+	float inc_amt = 0.001666666;
+	float *radius_deltas;
 	array fixed_old;
 	array moving_old;
 	//const array& mem_result = &result_stack;
@@ -23,11 +23,11 @@ int main(int argc, char **argv) {
 	
 		fixed_old = loadImage(ASSETS_DIR "/examples/fft_scale/fixed1.pgm");
 		moving_old = loadImage(ASSETS_DIR "/examples/fft_scale/moving1.pgm");
-		int j = 1 - num_of_scales*inc_amt;
-		radius_deltas = new int[num_of_scales * 2 + 1];
+		float j = 1 - num_of_scales*inc_amt;
+		radius_deltas = new float[num_of_scales * 2 + 1];
 		for (int i = 0; i < 61; i++) {
 			radius_deltas[i] = j;
-			int j = 1 - num_of_scales*inc_amt;
+			j += inc_amt;
 		}
 		std::cout<<"Taking Default output directory\n";
 		str3 = NULL;
@@ -35,11 +35,11 @@ int main(int argc, char **argv) {
 
 		fixed_old = loadImage(argv[1]);
 		moving_old = loadImage(argv[2]);
-		int j = 1 - num_of_scales*inc_amt;
-		radius_deltas = new int[num_of_scales * 2 + 1];
+		float j = 1 - num_of_scales*inc_amt;
+		radius_deltas = new float[num_of_scales * 2 + 1];
 		for (int i = 0; i < 61; i++) {
 			radius_deltas[i] = j;
-			int j = 1 - num_of_scales*inc_amt;
+			j += inc_amt;
 		}
 		std::cout<<"Taking Default output directory\n";
 		str3 = NULL;
@@ -53,9 +53,9 @@ int main(int argc, char **argv) {
 		num_of_scales = std::stoi(argv[3], &sz1);
 
 		inc_amt = std::stof(argv[4], &sz2);
-		int j = 1 - num_of_scales*inc_amt;
-		radius_deltas = new int[num_of_scales * 2 + 1];
-		for (int i = 0; i < num_of_scales; i++) {
+		float j = 1 - num_of_scales*inc_amt;
+		radius_deltas = new float[num_of_scales * 2 + 1];
+		for (int i = 0; i < num_of_scales * 2 +1; i++) {
 			radius_deltas[i] = j;
 			j += inc_amt;
 		}
@@ -75,9 +75,9 @@ int main(int argc, char **argv) {
 		num_of_scales = std::stoi(argv[3], &sz1);
 
 		inc_amt = std::stof(argv[4], &sz2);
-		int j = 1 - num_of_scales*inc_amt;
-		radius_deltas = new int[num_of_scales * 2 + 1];
-		for (int i = 0; i < num_of_scales; i++) {
+		float j = 1 - num_of_scales*inc_amt;
+		radius_deltas = new float[num_of_scales * 2 + 1];
+		for (int i = 0; i < num_of_scales * 2 + 1; i++) {
 			radius_deltas[i] = j;
 			j += inc_amt;
 		}
@@ -173,72 +173,65 @@ int main(int argc, char **argv) {
 	//std::cout<<max_value_fft<<'\n';
 
 	array fixed_fft = fft2(fixed);
+	fixed_fft(0, 0) = 0;
 	array moving_fft = fft2(moving);
-
+	moving_fft(0, 0) = 0;
 	af::max(&max_value_fft, &idx_max_fft, fixed_fft);
 
 	int num_radius_deltas = num_of_scales * 2 + 1;
 	array result_stack(imgw, imgh, 61);
 
 	float peaks[61];
+	float min_values[61];
 	for (int i = 0; i< num_radius_deltas; i++) {
-		int rd = radius_deltas[i];
+		float rd = radius_deltas[i];
 		array result;
-		if(i < num_of_scales) {
-		
-			float new_imgh = imgh - (rd * 2);
-			float new_imgw = imgw - (rd * 2);
+			//std::cout<<scale_y<<'\n';
+		if (rd < 1) {
+		rd = 2 - rd;
+		//float new_imgh = imgh - (rd * 2);
+			//float new_imgw = imgw - (rd * 2);
 
 			//std::cout<<new_imgw<<'\n';
-			float scale_y = new_imgh / imgh;
-			float scale_x = new_imgw / imgw;
-
-			//std::cout<<scale_y<<'\n';
-
-			float t_x = ceil((imgw + 1) / 2)  * (1 - (new_imgw / imgw));
-			float t_y = ceil((imgh + 1) / 2)  * (1 - (new_imgh / imgh));
-
-			float transformation_entries[] = {scale_x, 0.0, t_x, 0.0, scale_y, t_y};
-			array transform_matrix(3, 2, transformation_entries);
-
-			array moving_scaled = transform(moving, transform_matrix, 0, 0,  AF_INTERP_NEAREST, false);
-
-
-			array moving_scaled_fft = fft2(moving_scaled);
-			array conj_mov_scaled_fft = conjg(moving_scaled_fft);
-			
-			array result_fft = fixed_fft * conj_mov_scaled_fft; 
-
-			array inv_fft = ifft2(result_fft);
-			result = fftshift(abs(inv_fft));
-			af::max(&max_value_real, &idx_max, result);
-			af::min(&min_value, &idx_min, result);
-			//std::cout<<max_value_real<<'\n';
-			std::cout<<"Index: "<<idx_max<<'\n';
-			peaks[i] = max_value_real;
-			result = (result - min_value) / (max_value_real - min_value);
-			char str[200];
-			if (str3 != NULL) {
-				sprintf(str, "%simage%02d.pgm", str3, i);
-			} else {
-				sprintf(str, "image%02d.pgm", i);
-			}
-
-			saveImage(str, result);
-			//std::cout<<result.dims(0)<<rd<<result.dims(1)<<'\n';
-			result_stack(span,span,i) = result;
-			//std::cout<<moving_scaled_fft.dims(0)<<"hel"<<moving_scaled_fft.dims(1)<<'\n';
-		} else if (i > num_of_scales) {
+					
+		std::cout<<rd<<'\n';	
+		float scale_y = rd;
+		float scale_x = rd;
 		
-			float new_imgh = imgh + (rd*2);
-			float new_imgw = imgw + (rd*2);
+			float t_x = ceil((imgw + 1) / 2)  * (1 - scale_x);
+			float t_y = ceil((imgh + 1) / 2)  * (1 - scale_y);
+			
+		
 
-			float scale_y = new_imgh / imgh;
-			float scale_x = new_imgw / imgw;
+		float transformation_entries[] = {scale_x, 0.0, t_x, 0.0, scale_y, t_y};
+		array transform_matrix(3, 2, transformation_entries);
+		array moving_scaled = transform(moving, transform_matrix, 0, 0,  AF_INTERP_NEAREST, false);
 
-			float t_x = ceil((imgw + 1) / 2) * (1 - scale_x);
-			float t_y = ceil((imgh + 1) / 2) * (1 - scale_y);
 
+		array moving_scaled_fft = fft2(moving_scaled);
+		array conj_mov_scaled_fft = conjg(moving_scaled_fft);
+		
+		array result_fft = fixed_fft * conj_mov_scaled_fft; 
+		array inv_fft = ifft2(result_fft);
+		result = fftshift(abs(inv_fft));
+		af::max(&max_value_real, &idx_max, result);
+		af::min(&min_value, &idx_min, result);
+		std::cout<<max_value_real<<'\n';
+		std::cout<<"Index: "<<idx_max<<'\n';
+		peaks[i] = max_value_real;
+		min_values[i] = min_value;
+		//std::cout<<result.dims(0)<<rd<<result.dims(1)<<'\n';
+		result_stack(span,span,i) = result(span, span);
+		//std::cout<<moving_scaled_fft.dims(0)<<"hel"<<moving_scaled_fft.dims(1)<<'\n';
+		//af_print(result(0, 0));
+		//af_print(result_stack(0,0,i));
+//		} else if (i > num_of_scales) {
+		} else if (rd > 1) {
+		float scale_y = rd;
+		float scale_x = rd;
+		std::cout<<rd<<'\n';
+			float t_x = ceil((imgw + 1) / 2)  * (1 - scale_x);
+			float t_y = ceil((imgh + 1) / 2)  * (1 - scale_y);
 			float transformation_entries[] = {scale_x, 0.0, t_x, 0.0, scale_y, t_y};
 			array transform_matrix(3, 2, transformation_entries);
 
@@ -270,48 +263,61 @@ int main(int argc, char **argv) {
 			
 			//std::cout<<"str"<<'\n';
 			peaks[i] = max_value_real;
-			result = (result - min_value) / (max_value_real - min_value);
-			char str[200];
+			min_values[i] = min_value;
+		//	result = (result - min_value) / (max_value_real - min_value);
+		//	char str[200];
 			//sprintf(str, "%simage%02d.pgm", str3, i);
-			if (str3 != NULL) {
-				sprintf(str, "%simage%02d.pgm", str3, i);
-			} else {
-				sprintf(str, "image%02d.pgm", i);
-			}
-			saveImage(str, result);
+	//		if (str3 != NULL) {
+	//			sprintf(str, "%simage%02d.pgm", str3, i);
+	//		} else {
+	//			sprintf(str, "image%02d.pgm", i);
+	//		}
+	//		saveImage(str, result);
 			result_stack(span, span,i) = result;
-
-			//std::cout<<result.dims(0)<<"hasdfasdf"<<result.dims(1)<<'\n';
-		} else {
-			array conj_mov_fft = conjg(moving_fft);	
-			
-			array result_fft = fixed_fft * conj_mov_fft;
-			
-			array inv_fft = ifft2(result_fft);
-			result = fftshift(abs(inv_fft));
-			af::max(&max_value_real, &idx_max, result);
-			af::min(&min_value, &idx_min, result);
-			//std::cout<<"Peak Value at 30: "<<max_value_real<<'\n';
-			std::cout<<"Index: "<<idx_max<<'\n';
-			peaks[i] = max_value_real;
-			result = (result - min_value) / (max_value_real - min_value);
-			char str[200];
-			//sprintf(str, "%simage%02d.pgm", str3, i);
-			saveImage(str, result);
-			if (str3 != NULL) {
-				sprintf(str, "%simage%02d.pgm", str3, i);
-			} else {
-				sprintf(str, "image%02d.pgm", i);
-			}
-			//char key_str[20];
-			//sprintf(key_str, "A%02d", i);
-			//saveArray(key_str, result, str);
-			result_stack(span, span, i) = result;
-
-			//std::cout<<"Index of Max"<<idx_max<<'\n';
-			//std::cout<<result.dims(0)<<"this is zero"<<result.dims(1)<<'\n';
-		}
-
+		}		
+//		
+//			float new_imgh = imgh + (rd*2);
+//			float new_imgw = imgw + (rd*2);
+//
+//			float scale_y = new_imgh / imgh;
+//			float scale_x = new_imgw / imgw;
+//
+//			float t_x = ceil((imgw + 1) / 2) * (1 - scale_x);
+//			float t_y = ceil((imgh + 1) / 2) * (1 - scale_y);
+//
+//
+//			//std::cout<<result.dims(0)<<"hasdfasdf"<<result.dims(1)<<'\n';
+//		} else {
+//			std::cout<<rd<<'\n';
+//			array conj_mov_fft = conjg(moving_fft);	
+//			
+//			array result_fft = fixed_fft * conj_mov_fft;
+//			
+//			array inv_fft = ifft2(result_fft);
+//			result = fftshift(abs(inv_fft));
+//			af::max(&max_value_real, &idx_max, result);
+//			af::min(&min_value, &idx_min, result);
+//			//std::cout<<"Peak Value at 30: "<<max_value_real<<'\n';
+//			std::cout<<"Index: "<<idx_max<<'\n';
+//			peaks[i] = max_value_real;
+//			//result = (result - min_value) / (max_value_real - min_value);
+//			char str[200];
+//			//sprintf(str, "%simage%02d.pgm", str3, i);
+//			if (str3 != NULL) {
+//				sprintf(str, "%simage%02d.pgm", str3, i);
+//			} else {
+//				sprintf(str, "image%02d.pgm", i);
+//			}
+//			saveImage(str, result);
+//			//char key_str[20];
+//			//sprintf(key_str, "A%02d", i);
+//			//saveArray(key_str, result, str);
+//			result_stack(span, span, i) = result;
+//
+//			//std::cout<<"Index of Max"<<idx_max<<'\n';
+//			//std::cout<<result.dims(0)<<"this is zero"<<result.dims(1)<<'\n';
+//		}
+//
 
 	//const array& mem_result = &result_stack;
 
@@ -324,12 +330,15 @@ int main(int argc, char **argv) {
 	//max(&max_element_array3, &max_idx_array3, &result_stack, 3);
 	//af::print("Max_Element_Array", max_value_real);
 	//std::cout<<max_value_real;
-	}
-	af::max(&max_value_real, &idx_max, result_stack);
-	af::min(&min_value, &idx_min, result_stack);
+	
+}
+	af::max(&max_value_real, &idx_max, result_stack(span, span, span));
+	//max_value_real = af::max(result_stack);
+	//af_print(result_stack(0, 0, 0));
+	std::cout<<"MAX_ From Stack"<<max_value_real<<'\n';
+	af::min(&min_value, &idx_min, result_stack(span, span, span));
 	//result_stack = (result_stack - min_value) / (max_value_real - min_value);
 	std::cout<<"Max Index Flat: "<<idx_max<<'\n';
-	std::cout<<"result stack dims"<<result_stack.dims()<<'\n';
 	
 	float max_final = 0.0;
 	int max_index = 0;
@@ -338,6 +347,23 @@ int main(int argc, char **argv) {
 			max_final = peaks[u];
 			max_index = u;
 		}
+	}
+
+	
+
+	for (int norm_i = 0; norm_i < 61; norm_i++){
+	
+		char str[200];
+		if (str3 != NULL) {
+			sprintf(str, "%simage%02d.pgm", str3, norm_i);
+		} else {
+			sprintf(str, "image%02d.pgm", norm_i);
+		}
+		array result1 = result_stack(span, span, norm_i);
+		result1 = (result1 - min_values[norm_i])/ (max_value_real - min_values[norm_i]);
+		//max(&max_value_real, &idx_max, result2);
+		//std::cout<<max_value_real<<'\n';
+		saveImage(str, result1);
 	}
 	std::cout<<"Max_Final_peak: "<<max_final<<'\n';
 	std::cout<<"Index in stack: "<<max_index<<'\n';
