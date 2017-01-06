@@ -17,6 +17,10 @@ cstdlib
 -
 cstring
 -
+string
+-
+iostream
+-
 
 /usr/local/include/af/algorithm.h
 af/defines.h

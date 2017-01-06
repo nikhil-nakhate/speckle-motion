@@ -102,6 +102,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named example_fft_scale_cuda_cpu
+
+# Build rule for target.
+example_fft_scale_cuda_cpu: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 example_fft_scale_cuda_cpu
+.PHONY : example_fft_scale_cuda_cpu
+
+# fast build rule for target.
+example_fft_scale_cuda_cpu/fast:
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cpu.dir/build.make CMakeFiles/example_fft_scale_cuda_cpu.dir/build
+.PHONY : example_fft_scale_cuda_cpu/fast
+
+#=============================================================================
+# Target rules for targets named example_fft_scale_cuda_cuda
+
+# Build rule for target.
+example_fft_scale_cuda_cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 example_fft_scale_cuda_cuda
+.PHONY : example_fft_scale_cuda_cuda
+
+# fast build rule for target.
+example_fft_scale_cuda_cuda/fast:
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cuda.dir/build.make CMakeFiles/example_fft_scale_cuda_cuda.dir/build
+.PHONY : example_fft_scale_cuda_cuda/fast
+
+#=============================================================================
 # Target rules for targets named example_fft_scale_cuda_new_cpu
 
 # Build rule for target.
@@ -140,6 +166,49 @@ example_fft_scale_cuda_new_unified/fast:
 	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_new_unified.dir/build.make CMakeFiles/example_fft_scale_cuda_new_unified.dir/build
 .PHONY : example_fft_scale_cuda_new_unified/fast
 
+#=============================================================================
+# Target rules for targets named example_fft_scale_cuda_unified
+
+# Build rule for target.
+example_fft_scale_cuda_unified: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 example_fft_scale_cuda_unified
+.PHONY : example_fft_scale_cuda_unified
+
+# fast build rule for target.
+example_fft_scale_cuda_unified/fast:
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_unified.dir/build.make CMakeFiles/example_fft_scale_cuda_unified.dir/build
+.PHONY : example_fft_scale_cuda_unified/fast
+
+computer_vision/fft_scale_cuda.o: computer_vision/fft_scale_cuda.cpp.o
+.PHONY : computer_vision/fft_scale_cuda.o
+
+# target to build an object file
+computer_vision/fft_scale_cuda.cpp.o:
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cpu.dir/build.make CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.o
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cuda.dir/build.make CMakeFiles/example_fft_scale_cuda_cuda.dir/computer_vision/fft_scale_cuda.cpp.o
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_unified.dir/build.make CMakeFiles/example_fft_scale_cuda_unified.dir/computer_vision/fft_scale_cuda.cpp.o
+.PHONY : computer_vision/fft_scale_cuda.cpp.o
+
+computer_vision/fft_scale_cuda.i: computer_vision/fft_scale_cuda.cpp.i
+.PHONY : computer_vision/fft_scale_cuda.i
+
+# target to preprocess a source file
+computer_vision/fft_scale_cuda.cpp.i:
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cpu.dir/build.make CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.i
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cuda.dir/build.make CMakeFiles/example_fft_scale_cuda_cuda.dir/computer_vision/fft_scale_cuda.cpp.i
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_unified.dir/build.make CMakeFiles/example_fft_scale_cuda_unified.dir/computer_vision/fft_scale_cuda.cpp.i
+.PHONY : computer_vision/fft_scale_cuda.cpp.i
+
+computer_vision/fft_scale_cuda.s: computer_vision/fft_scale_cuda.cpp.s
+.PHONY : computer_vision/fft_scale_cuda.s
+
+# target to generate assembly for a file
+computer_vision/fft_scale_cuda.cpp.s:
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cpu.dir/build.make CMakeFiles/example_fft_scale_cuda_cpu.dir/computer_vision/fft_scale_cuda.cpp.s
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_cuda.dir/build.make CMakeFiles/example_fft_scale_cuda_cuda.dir/computer_vision/fft_scale_cuda.cpp.s
+	$(MAKE) -f CMakeFiles/example_fft_scale_cuda_unified.dir/build.make CMakeFiles/example_fft_scale_cuda_unified.dir/computer_vision/fft_scale_cuda.cpp.s
+.PHONY : computer_vision/fft_scale_cuda.cpp.s
+
 computer_vision/fft_scale_cuda_new.o: computer_vision/fft_scale_cuda_new.cpp.o
 .PHONY : computer_vision/fft_scale_cuda_new.o
 
@@ -177,10 +246,16 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... example_fft_scale_cuda_cpu"
+	@echo "... example_fft_scale_cuda_cuda"
 	@echo "... example_fft_scale_cuda_new_cpu"
 	@echo "... example_fft_scale_cuda_new_cuda"
 	@echo "... example_fft_scale_cuda_new_unified"
+	@echo "... example_fft_scale_cuda_unified"
 	@echo "... rebuild_cache"
+	@echo "... computer_vision/fft_scale_cuda.o"
+	@echo "... computer_vision/fft_scale_cuda.i"
+	@echo "... computer_vision/fft_scale_cuda.s"
 	@echo "... computer_vision/fft_scale_cuda_new.o"
 	@echo "... computer_vision/fft_scale_cuda_new.i"
 	@echo "... computer_vision/fft_scale_cuda_new.s"

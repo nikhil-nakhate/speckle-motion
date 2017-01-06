@@ -13,19 +13,20 @@ using namespace af;
 int main(int argc, char **argv) {
 
 	char *str3 = NULL;
-	int num_of_scales = 30;
-	float inc_amt = 0.001666666;
+	int num_of_scales = 24;
+	float inc_amt = 0.0001;
 	float *radius_deltas;
 	array fixed_old;
 	array moving_old;
 	//const array& mem_result = &result_stack;
 	if (argc < 3) {
 	
-		fixed_old = loadImage(ASSETS_DIR "/examples/fft_scale/fixed1.pgm");
-		moving_old = loadImage(ASSETS_DIR "/examples/fft_scale/moving1.pgm");
+		fixed_old = loadImage(ASSETS_DIR "/examples/fft_scale/fixed1.png");
+		moving_old = loadImage(ASSETS_DIR "/examples/fft_scale/moving1.png");
 		float j = 1 - num_of_scales*inc_amt;
 		radius_deltas = new float[num_of_scales * 2 + 1];
-		for (int i = 0; i < 61; i++) {
+		int num_radius_deltas = num_of_scales * 2 + 1;
+		for (int i = 0; i < num_radius_deltas; i++) {
 			radius_deltas[i] = j;
 			j += inc_amt;
 		}
@@ -37,7 +38,8 @@ int main(int argc, char **argv) {
 		moving_old = loadImage(argv[2]);
 		float j = 1 - num_of_scales*inc_amt;
 		radius_deltas = new float[num_of_scales * 2 + 1];
-		for (int i = 0; i < 61; i++) {
+		int num_radius_deltas = num_of_scales * 2 + 1;
+		for (int i = 0; i < num_radius_deltas; i++) {
 			radius_deltas[i] = j;
 			j += inc_amt;
 		}
@@ -179,10 +181,10 @@ int main(int argc, char **argv) {
 	af::max(&max_value_fft, &idx_max_fft, fixed_fft);
 
 	int num_radius_deltas = num_of_scales * 2 + 1;
-	array result_stack(imgw, imgh, 61);
+	array result_stack(imgw, imgh, num_radius_deltas);
 
-	float peaks[61];
-	float min_values[61];
+	float peaks[num_radius_deltas];
+	float min_values[num_radius_deltas];
 	for (int i = 0; i< num_radius_deltas; i++) {
 		float rd = radius_deltas[i];
 		array result;
@@ -198,14 +200,13 @@ int main(int argc, char **argv) {
 		float scale_y = rd;
 		float scale_x = rd;
 		
-			float t_x = ceil((imgw + 1) / 2)  * (1 - scale_x);
-			float t_y = ceil((imgh + 1) / 2)  * (1 - scale_y);
+		float t_x = ceil((imgw + 1) / 2)  * (1 - scale_x);
+		float t_y = ceil((imgh + 1) / 2)  * (1 - scale_y);
 			
-		
 
 		float transformation_entries[] = {scale_x, 0.0, t_x, 0.0, scale_y, t_y};
 		array transform_matrix(3, 2, transformation_entries);
-		array moving_scaled = transform(moving, transform_matrix, 0, 0,  AF_INTERP_NEAREST, false);
+		array moving_scaled = transform(moving, transform_matrix, 0, 0,  AF_INTERP_BICUBIC, false);
 
 
 		array moving_scaled_fft = fft2(moving_scaled);
@@ -235,7 +236,7 @@ int main(int argc, char **argv) {
 			float transformation_entries[] = {scale_x, 0.0, t_x, 0.0, scale_y, t_y};
 			array transform_matrix(3, 2, transformation_entries);
 
-			array fixed_scaled = transform(fixed, transform_matrix,0, 0,  AF_INTERP_NEAREST, false);
+			array fixed_scaled = transform(fixed, transform_matrix,0, 0,  AF_INTERP_BICUBIC, false);
 			
 
 			timer start_fft2 = timer::start();
@@ -342,7 +343,7 @@ int main(int argc, char **argv) {
 	
 	float max_final = 0.0;
 	int max_index = 0;
-	for (int u = 0; u <61; u++ ){
+	for (int u = 0; u <num_radius_deltas; u++ ){
 		if (peaks[u] > max_final){
 			max_final = peaks[u];
 			max_index = u;
@@ -351,13 +352,13 @@ int main(int argc, char **argv) {
 
 	
 
-	for (int norm_i = 0; norm_i < 61; norm_i++){
+	for (int norm_i = 0; norm_i < num_radius_deltas; norm_i++){
 	
 		char str[200];
 		if (str3 != NULL) {
-			sprintf(str, "%simage%02d.pgm", str3, norm_i);
+			sprintf(str, "%simage%02d.png", str3, norm_i);
 		} else {
-			sprintf(str, "image%02d.pgm", norm_i);
+			sprintf(str, "image%02d.png", norm_i);
 		}
 		array result1 = result_stack(span, span, norm_i);
 		result1 = (result1 - min_values[norm_i])/ (max_value_real - min_values[norm_i]);
@@ -369,12 +370,61 @@ int main(int argc, char **argv) {
 	std::cout<<"Index in stack: "<<max_index<<'\n';
 	//std::cout<<max_value_real<<'\n';
 	//std::cout<<idx_max<<'\n';
+	for (int y = 0; y<num_radius_deltas; y++) {
+		array modresult = result_stack(span, span, y);
+		modresult = modresult - min_values[y];
+		result_stack(span, span, y) = modresult;
+	}
+	int resultDimY = result_stack.dims(0);
+	int resultDimX = result_stack.dims(1);
+	int resultDimZ = result_stack.dims(2);
+	
+	int cX = ceil((resultDimX + 1) / 2.0);
+	int cY = ceil((resultDimY + 1) / 2.0);
+	int cZ = ceil((resultDimZ + 1) / 2.0);
 
+	array max_along_3;
+	array max_idx_3;
+	af::max(max_along_3, max_idx_3, result_stack(span, span, span), 2);
+	std::cout<<max_along_3.dims(0)<<'\n';
+	array maxfilted = maxfilt(max_along_3, 3, 3, AF_PAD_ZERO);
+	array eq_array_stack(imgw, imgh, num_radius_deltas);
+	for (int f = 0; f < num_radius_deltas; f++) {
+	
+		array eq_array;
+		eq_array = operator==(result_stack(span, span, f), maxfilted);
+		eq_array_stack(span, span, f) = eq_array;
+	
+	}
+	array idx = where(eq_array_stack);
+	std::cout<<idx.dims(0)<<'\n';
+	std::cout<<idx.dims(1)<<'\n';
 	//char str2[200];
 	//for (int j = 0; j<60; j++) {
 	//	sprintf(str2, "image%02d.pgm", j);
 	//	saveImage(str2, result_stack(span, span, j));
 	//}
+	std::cout<<"Hello"<<'\n';
+	array sorted_stack;
+	array sorted_idx_stack;
+	sort(sorted_stack, sorted_idx_stack, result_stack(idx), 0, false);
 
+	array idx_sorted = idx(sorted_idx_stack);
+
+	array xs(idx_sorted.dims(0));
+	array ys(idx_sorted.dims(0));
+	array zs(idx_sorted.dims(0));
+	array resids(idx_sorted.dims(0));
+
+	for (int j = 0; j< idx_sorted.dims(0); j++)	{
+		
+		zs(j) =  (idx_sorted(j) / (result_stack.dims(0) * result_stack.dims(1)));
+		resids(j) = idx_sorted(j) - (result_stack.dims(0) * result_stack.dims(1) * zs(j));
+		xs(j) = resids(j) % result_stack.dims(1);
+		ys(j) = resids(j) / result_stack.dims(1);
+	
+	
+	}
+	std::cout<<xs.dims(0);
 }
 

@@ -56,7 +56,10 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/example_fft_scale_cuda_cpu.dir/DependInfo.cmake"
+  "CMakeFiles/example_fft_scale_cuda_cuda.dir/DependInfo.cmake"
   "CMakeFiles/example_fft_scale_cuda_new_cpu.dir/DependInfo.cmake"
   "CMakeFiles/example_fft_scale_cuda_new_cuda.dir/DependInfo.cmake"
   "CMakeFiles/example_fft_scale_cuda_new_unified.dir/DependInfo.cmake"
+  "CMakeFiles/example_fft_scale_cuda_unified.dir/DependInfo.cmake"
   )
